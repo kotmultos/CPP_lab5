@@ -29,8 +29,8 @@ public class InputManager {
         try (FileReader reader = new FileReader(filename)) {
             Scanner scan = new Scanner(reader);
             while (scan.hasNextLine()) {
-               currentLine = scan.nextLine().trim();
-               result.append(currentLine + " ");
+                currentLine = scan.nextLine().trim();
+                result.append(currentLine + " ");
             }
         } catch (IOException e) {
             System.out.println("An error occurred while reading from file./// filename: " + filename);

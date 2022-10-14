@@ -17,6 +17,7 @@ public class StringHelper {
         Matcher mat = pattern.matcher(str);                   // Searching pattern in str
         return mat.replaceAll(" ");                 // Replacing 2 or more spaces
     }
+
     // tmp method for faster testing before tests are written
     private static String removeSpaceBeforeSentenceEnd(String str) {
         // Creating a pattern for spaces between word and symbol of end of the sentence
@@ -26,7 +27,20 @@ public class StringHelper {
     }
 
     public static List<String> splitOnSentences(String str) {
-        String [] result = str.split("(?<=[\\S][!?.])\\s+");
+        String[] result = str.split("(?<=[\\S][!?.])\\s+");
         return Arrays.asList(result);
+    }
+
+    public static String findFirstWordStartWithVowel(String sentence) {
+        String result = null;
+
+        return result;
+
+    }
+
+    public static String findLongestWord(String sentence) {
+        String result = null;
+
+        return result;
     }
 }
