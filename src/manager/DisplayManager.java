@@ -16,6 +16,6 @@ public class DisplayManager {
     }
 
     public static void PrintMessage(String s) {
-        System.out.println("---\t" + s);
+        System.out.println(">:\t" + s);
     }
 }

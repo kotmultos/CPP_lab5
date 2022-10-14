@@ -33,14 +33,30 @@ public class StringHelper {
 
     public static String findFirstWordStartWithVowel(String sentence) {
         String result = null;
+        Pattern pattern = Pattern.compile("\\b[aeiouаеиіоуяюєї]\\S*\\b\\s{1}", Pattern.CASE_INSENSITIVE);
+        Matcher mat = pattern.matcher(sentence);
 
+        boolean tmp = mat.find();
+        if (tmp) {
+            result = mat.group();
+        }
         return result;
-
     }
 
     public static String findLongestWord(String sentence) {
-        String result = null;
+        String [] words = sentence.split("[\\s!?.,]+");
+        int pos = 0;
+        for (int i = 1; i < words.length; i++) {
+            if (words[i].length() > words[pos].length()) {
+                pos = i;
+            }
+        }
 
-        return result;
+        return words[pos];
+    }
+
+    public static String swapWordsInString(String sentence, String firstWordStartWithVowel, String longestWord) {
+        // to be implemented ;)
+        return sentence;
     }
 }

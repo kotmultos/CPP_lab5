@@ -43,14 +43,14 @@ public class TaskPerformer {
 
             // deal with situations when swap is not available
             if (firstWordStartWithVowel == null) {                      // no words starting with vowel
-                DisplayManager.PrintMessage("Речення " + sentence + " не містить слів, що починаються на голосну. Перестановка неможлива.");
+                DisplayManager.PrintMessage("Речення \"" + sentence + "\" не містить слів, що починаються на голосну. Перестановка неможлива.");
                 resultSentences.add(sentence);
             } else if (firstWordStartWithVowel.equals(longestWord)) {   // both words are equal
                 DisplayManager.PrintMessage("У реченні " + sentence +
-                        " найдовше слово і перше слово, що починається на голосну, однакові. Перестановка неможлива.");
+                        " найдовше слово і перше слово, що починається на голосну, однакові (\"" + longestWord +"\"). Перестановка неможлива.");
                 resultSentences.add(sentence);
             } else {                                                    // if both words are found, swap them in sentence
-                String newSentence = "test";    // swap words
+                String newSentence = StringHelper.swapWordsInString(sentence, firstWordStartWithVowel, longestWord);    // swap words
                 resultSentences.add(newSentence);
             }
         }
