@@ -13,5 +13,4 @@ public class DisplayManager {
             System.out.println(line);
         }
     }
-
 }
