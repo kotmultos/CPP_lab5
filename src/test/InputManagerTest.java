@@ -30,6 +30,5 @@ class InputManagerTest {
             System.setIn(new ByteArrayInputStream("Якийсь дивний\nтекст       з       купою         пробілів      !\n\n".getBytes()));
             assertEquals("Якийсь дивний текст       з       купою         пробілів      !", InputManager.getStringsFromConsole());
         }
-
     }
 }

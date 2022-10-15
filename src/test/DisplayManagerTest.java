@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -70,7 +69,7 @@ class DisplayManagerTest {
             System.setOut(new PrintStream(outContent));
 
             String description = "description";
-            List<String> list = new ArrayList<String>() {
+            List<String> list = new ArrayList<>() {
                 {
                     add("sentence number 1.");
                     add("інше речення, чом би й не спробувати.");
@@ -89,10 +88,3 @@ class DisplayManagerTest {
         }
     }
 }
-//public static void print(String description, List<String> text) {
-//        System.out.println("---\t" + description + " ---");
-//        for (String line : text) {
-//        System.out.println(line);
-//        }
-//        }
-//
