@@ -1,6 +1,8 @@
-import manager.DisplayManager;
-import manager.InputManager;
-import manager.StringHelper;
+package main;
+
+import main.manager.DisplayManager;
+import main.manager.InputManager;
+import main.manager.StringHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +11,9 @@ public class TaskPerformer {
     private String text;
 
     public TaskPerformer() {
-//        text = InputManager.getStringsFromConsole("Введіть стрічки тексту:");
-        text = InputManager.getStringsFromFile("input.txt");
+        System.out.println("Введіть бажаний текст. Для завершення вводу натисність \"enter\" в новій стрічці");
+        text = InputManager.getStringsFromConsole();
+//        text = InputManager.getStringsFromFile("input.txt");
     }
 
     public void performLab() {
