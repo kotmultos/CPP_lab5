@@ -16,22 +16,23 @@ public class TaskPerformer {
     public void performLab() {
         // check if user input is empty string
         if (text.isBlank()) {
-            DisplayManager.PrintMessage("На жаль, користувач не ввів текст. Перезапустіть програму і введіть текст..");
+            DisplayManager.print("На жаль, користувач не ввів текст. Перезапустіть програму і введіть текст..");
         } else {
-            DisplayManager.Print("Ввід користувача:", text);
+            DisplayManager.print("Ввід користувача:", text);
 
             // remove odd whitespaces
             text = StringHelper.convertTextToNormalState(text);
-            DisplayManager.Print("Нормалізований текст", text);
+            DisplayManager.print("Нормалізований текст", text);
 
             // split on sentences
             List<String> sentences = StringHelper.splitOnSentences(text);
-            DisplayManager.Print("Текст, поділений на речення", sentences);
+            DisplayManager.print("Текст, поділений на речення", sentences);
 
             List<String> result = swapWordsByCondition(sentences);
-            DisplayManager.Print("** Результат роботи програми **", result);
+            DisplayManager.print("** Результат роботи програми **", result);
         }
     }
+
     private List<String> swapWordsByCondition(List<String> sentences) {
         List<String> resultSentences = new ArrayList<>();
         // from here I need to work with each sentence separately
@@ -43,11 +44,11 @@ public class TaskPerformer {
 
             // deal with situations when swap is not available
             if (firstWordStartWithVowel == null) {                      // no words starting with vowel
-                DisplayManager.PrintMessage("Речення \"" + sentence + "\" не містить слів, що починаються на голосну. Перестановка неможлива.");
+                DisplayManager.print("Речення \"" + sentence + "\" не містить слів, що починаються на голосну. Перестановка неможлива.");
                 resultSentences.add(sentence);
             } else if (firstWordStartWithVowel.equals(longestWord)) {   // both words are equal
-                DisplayManager.PrintMessage("У реченні " + sentence +
-                        " найдовше слово і перше слово, що починається на голосну, однакові (\"" + longestWord +"\"). Перестановка неможлива.");
+                DisplayManager.print("У реченні \"" + sentence +
+                        "\" найдовше слово і перше слово, що починається на голосну, однакові (\"" + longestWord + "\"). Перестановка неможлива.");
                 resultSentences.add(sentence);
             } else {                                                    // if both words are found, swap them in sentence
                 String newSentence = StringHelper.swapWordsInString(sentence, firstWordStartWithVowel, longestWord);    // swap words

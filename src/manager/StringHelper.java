@@ -38,13 +38,13 @@ public class StringHelper {
 
         boolean tmp = mat.find();
         if (tmp) {
-            result = mat.group();
+            result = mat.group().trim();
         }
         return result;
     }
 
     public static String findLongestWord(String sentence) {
-        String [] words = sentence.split("[\\s!?.,]+");
+        String[] words = sentence.split("[\\s!?.,]+");
         int pos = 0;
         for (int i = 1; i < words.length; i++) {
             if (words[i].length() > words[pos].length()) {
@@ -56,7 +56,30 @@ public class StringHelper {
     }
 
     public static String swapWordsInString(String sentence, String firstWordStartWithVowel, String longestWord) {
-        // to be implemented ;)
-        return sentence;
+        StringBuilder builder = new StringBuilder(sentence);
+        if (longestWord.equals(firstWordStartWithVowel)) {
+            DisplayManager.print("Слова, задані для перестановки, однакові: \"" + longestWord + "\". Перестановка не має сенсу.");
+        } else {
+            Pattern patternVowel = Pattern.compile(firstWordStartWithVowel);
+            Pattern patternLongest = Pattern.compile(longestWord);
+
+            Matcher matcherVowel = patternVowel.matcher(sentence);
+            Matcher matcherLongest = patternLongest.matcher(sentence);
+
+            if (!(matcherVowel.find() && matcherLongest.find())) {
+                DisplayManager.print("Перестановка неможлива. Заданих слів не знайдено.");
+            } else {
+                // if longest is before the vowel, copy it firstly
+                if (matcherLongest.start() < matcherVowel.start()) {
+                    builder.replace(matcherVowel.start(), matcherVowel.end(), longestWord);
+                    builder.replace(matcherLongest.start(), matcherLongest.end(), firstWordStartWithVowel);
+                } else {
+                    builder.replace(matcherLongest.start(), matcherLongest.end(), firstWordStartWithVowel);
+                    builder.replace(matcherVowel.start(), matcherVowel.end(), longestWord);
+                }
+            }
+        }
+
+        return builder.toString();
     }
 }
