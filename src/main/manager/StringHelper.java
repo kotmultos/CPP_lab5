@@ -1,5 +1,6 @@
 package main.manager;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -13,23 +14,23 @@ public class StringHelper {
 
     public static String removeOddSpaces(String str) {
         // replace 2 or more whitespaces with just 1
-        Pattern pattern = Pattern.compile("\\s{2,}");  // Creating a pattern for whitespaces
-        Matcher mat = pattern.matcher(str);                   // Searching pattern in str
-        return mat.replaceAll(" ").trim();                 // Replacing 2 or more spaces
+        Pattern pattern = Pattern.compile("\\s{2,}");           // Creating a pattern for whitespaces
+        Matcher mat = pattern.matcher(str);                           // Searching pattern in str
+        return mat.replaceAll(" ").trim();                  // Replacing 2 or more spaces
     }
 
     // tmp method for faster testing before tests are written
     public static String removeSpaceBeforeSentenceEnd(String str) {
         // Creating a pattern for spaces between word and symbol of end of the sentence
         Pattern pattern = Pattern.compile("\\s+(?=\\p{Punct})");
-        Matcher mat = pattern.matcher(str);                     // Searching pattern in str
-        return mat.replaceAll("");                    // Replacing
+        Matcher mat = pattern.matcher(str);                           // Searching pattern in str
+        return mat.replaceAll("").trim();                   // Replacing
     }
 
     public static List<String> splitOnSentences(String str) {
         String tmp = convertTextToNormalState(str);
         String[] result = tmp.split("(?<=[\\S][!?.])\\s+");
-        return Arrays.asList(result);
+        return str.isBlank() ? new ArrayList<>() : Arrays.asList(result);
     }
 
     public static String findFirstWordStartWithVowel(String sentence) {
@@ -47,13 +48,15 @@ public class StringHelper {
 
     public static String findLongestWord(String sentence) {
         String[] words = sentence.split("[\\s!?.,]+");
+
         int pos = 0;
-        boolean flag = false;
+        boolean flag = true;
+
         for (int i = 1; i < words.length; i++) {
             if (words[i].length() > words[pos].length()) {
                 pos = i;
                 flag = true;
-            } else if(words[i].length() == words[pos].length()) {
+            } else if (words[i].length() == words[pos].length()) {
                 flag = false;
             }
         }

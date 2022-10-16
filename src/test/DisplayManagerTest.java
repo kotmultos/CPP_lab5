@@ -84,7 +84,7 @@ class DisplayManagerTest {
             }
 
             DisplayManager.print(description, list);
-            assertEquals( builder.toString(), outContent.toString());
+            assertEquals(builder.toString(), outContent.toString());
         }
     }
 }
